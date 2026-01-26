@@ -1,0 +1,20 @@
+[Unit]
+Description=Gunicorn daemon for Schizoid Lloyd Django application
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/schizoidlloyd
+Environment="PATH=/var/www/schizoidlloyd/venv/bin"
+EnvironmentFile=/var/www/schizoidlloyd/.env
+ExecStart=/var/www/schizoidlloyd/venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/var/www/schizoidlloyd/gunicorn.sock \
+    --timeout 60 \
+    --access-logfile /var/www/schizoidlloyd/logs/gunicorn-access.log \
+    --error-logfile /var/www/schizoidlloyd/logs/gunicorn-error.log \
+    config.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
