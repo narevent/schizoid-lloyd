@@ -9,251 +9,171 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div class="grain-overlay"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">SCHIZOID LLOYD</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#music">Music</a>
+            <a href="#newsletter">Newsletter</a>
+            <a href="#support">Support</a>
+        </div>
+    </nav>
 
-<div class="grain-overlay"></div>
-
-<nav class="main-nav">
-    <div class="nav-logo">SCHIZOID LLOYD</div>
-
-    <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#music">Music</a>
-        <a href="#newsletter">Newsletter</a>
-        <a href="#support">Support</a>
-    </div>
-</nav>
-
-<section class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">
-            <span class="glitch" data-text="SCHIZOID">SCHIZOID</span>
-            <span class="glitch" data-text="LLOYD">LLOYD</span>
-        </h1>
-        <p class="hero-subtitle">Dutch Progressive Metal • Haarlem</p>
-        <div class="hero-tagline">"Musical soundscapes recalling Leprous, Queen and Mr. Bungle"</div>
-    </div>
-    <div class="scroll-indicator">↓</div>
-</section>
-
-<section id="about" class="section about-section">
-    <div class="container">
-        <h2 class="section-title">The Journey</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Born in October 2007 in Haarlem, Netherlands...</p>
-                <p>After winning the Rob Acda Award...</p>
-                <p>The band has shared stages with Freak Kitchen...</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="glitch" data-text="SCHIZOID">SCHIZOID</span>
+                <span class="glitch" data-text="LLOYD">LLOYD</span>
+            </h1>
+            <p class="hero-subtitle">Dutch Progressive Metal • Haarlem</p>
+            <div class="hero-tagline">
+                "Musical soundscapes recalling Leprous, Queen and Mr. Bungle"
             </div>
-            <div class="lineup">
-                <h3>Lineup</h3>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">The Journey</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Born in October 2007 in Haarlem, Netherlands, Schizoid Lloyd emerged as a force of experimental avant-garde metal, defying conventions and pushing boundaries.</p>
+                    
+                    <p>After winning the Rob Acda Award in 2008 and releasing the critically acclaimed EP <em>Virus</em> in 2009, the band evolved into a six-piece powerhouse. Their debut album <strong>"The Last Note In God's Magnum Opus"</strong> (2014) was released through Finnish label Blood Music and mastered at the legendary Fascination Street Studios.</p>
+                    
+                    <p>The band has shared stages with Freak Kitchen, Amplifier, Bumblefoot, and Long Distance Calling, and was hailed as one of the highlights of ProgPower Europe 2011.</p>
+                </div>
+                
+                <div class="lineup">
+                    <h3>Lineup</h3>
+                    <ul>
+                        <li><strong>Ruben Kuhlmann</strong> — Lead Vocals, Keyboards, Piano</li>
+                        <li><strong>Remo Kuhlmann</strong> — Guitars, Sitar, Vocals</li>
+                        <li><strong>Thom Lich</strong> — Guitars, Vocals</li>
+                        <li><strong>Guus van Oosterum</strong> — Bass, Vocals</li>
+                        <li><strong>Boy van Ooijen</strong> — Drums</li>
+                        <li><strong>Silas van Bezu</strong> — Piano, Keyboards</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="section music-section">
+        <div class="container">
+            <h2 class="section-title">Listen</h2>
+            
+            <div class="music-grid">
+                <!-- Bandcamp Embed -->
+                <div class="music-item">
+                    <h3>The Last Note In God's Magnum Opus</h3>
+                    <div class="embed-container">
+                        <iframe style="border: 0; width: 100%; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2863634524/size=large/bgcol=333333/linkcol=e99708/tracklist=false/transparent=true/" seamless></iframe>
+                    </div>
+                    <p class="music-description">Debut album (2014) — A freakish journey through progressive metal landscapes</p>
+                </div>
+
+                <!-- Spotify Embed -->
+                <div class="music-item">
+                    <h3>Spotify</h3>
+                    <div class="embed-container">
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3XrqVvPz9sNQlqKLkJCVhN?utm_source=generator&theme=0" width="100%" height="470" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                    <p class="music-description">Stream our music on Spotify</p>
+                </div>
+            </div>
+
+            <div class="discography">
+                <h3>Discography</h3>
                 <ul>
-                    <li><strong>Ruben Kuhlmann</strong> — Lead Vocals, Keyboards</li>
-                    <li><strong>Remo Kuhlmann</strong> — Guitars, Sitar</li>
-                    <li><strong>Thom Lich</strong> — Guitars</li>
-                    <li><strong>Guus van Oosterum</strong> — Bass</li>
-                    <li><strong>Boy van Ooijen</strong> — Drums</li>
-                    <li><strong>Silas van Bezu</strong> — Keys</li>
+                    <li><strong>The Last Note In God's Magnum Opus</strong> (2014) — Full-length album</li>
+                    <li><strong>Circus</strong> (2010) — EP</li>
+                    <li><strong>Virus</strong> (2009) — EP</li>
                 </ul>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="music" class="section music-section">
-    <div class="container">
-        <h2 class="section-title">Listen</h2>
-        <div class="music-grid">
-            <div class="music-item">
-                <h3>The Last Note In God's Magnum Opus</h3>
-                <div class="embed-container bandcamp-embed">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/album=1764879616/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <p class="music-description">Debut album (2014)</p>
-            </div>
-            <div class="music-item">
-                <h3>Spotify</h3>
-                <div class="embed-container">
-                    <iframe src="https://open.spotify.com/embed/album/2Hj8ABNC5WEWX7yVPzsUFH" frameborder="0" allowfullscreen allow="encrypted-media"></iframe>
-                </div>
-                <p class="music-description">Stream on Spotify</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="newsletter" class="section newsletter-section">
-    <div class="container">
-        <div class="newsletter-box">
-            <h2>Stay Connected</h2>
-            <form method="post" class="newsletter-form">
-                {% csrf_token %}
-                <div class="form-group">
-                    {{ form.email }}
-                    <button type="submit" class="btn-subscribe">Subscribe</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-
-<section id="support" class="section support-section">
-    <div class="container">
-        <h2 class="section-title">Support Us</h2>
-        <div class="support-grid">
-            <div class="support-item">
-                <h3>Buy Our Music</h3>
-                <a href="https://schizoidlloyd.bandcamp.com/" class="btn-primary">Visit Bandcamp</a>
-            </div>
-
-            <div class="support-item nano-donate">
-                <h3>Donate with Nano</h3>
-                <div class="nano-address-box">
-                    <div id="nanoQR" class="nano-qr"></div>
-                    <div id="nanoAddress" class="nano-address">nano_1schizo1dlloyd1band1haarlem1netherlands1prog1metal1xno</div>
-                    <button class="btn-copy" id="copyBtn">Copy Address</button>
-                </div>
-            </div>
-
-            <div class="support-item">
-                <h3>Share Our Music</h3>
-                <div class="social-links">
-                    <a href="#" class="social-btn">Facebook</a>
-                    <a href="#" class="social-btn">Bandcamp</a>
-                </div>
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="section newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <h2>Stay Connected</h2>
+                <p>Subscribe to our newsletter for updates on new releases, shows, and exclusive content.</p>
+                
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <form method="post" class="newsletter-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.email }}
+                        <button type="submit" class="btn-subscribe">Subscribe</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-    <p>&copy; 2024 Schizoid Lloyd</p>
-</footer>
+    <!-- Support Section with Nano Donations -->
+    <section id="support" class="section support-section">
+        <div class="container">
+            <h2 class="section-title">Support Us</h2>
+            
+            <div class="support-grid">
+                <div class="support-item">
+                    <h3>Buy Our Music</h3>
+                    <p>Purchase our albums on Bandcamp and support independent music.</p>
+                    <a href="https://schizoidlloyd.bandcamp.com/" target="_blank" class="btn-primary">Visit Bandcamp</a>
+                </div>
 
-<script>
-// ============================================
-// MOBILE NAV TOGGLE - INLINE FOR RELIABILITY
-// ============================================
+                <div class="support-item nano-donate">
+                    <h3>Donate with Nano (XNO)</h3>
+                    <p>Support us with feeless, instant cryptocurrency donations.</p>
+                    <div class="nano-address-box">
+                        <div class="nano-qr" id="nanoQR">
+                            <!-- QR code will be generated here -->
+                        </div>
+                        <div class="nano-address" id="nanoAddress">
+                            nano_1schizo1dlloyd1band1haarlem1netherlands1prog1metal1xno
+                        </div>
+                        <button class="btn-copy" onclick="copyNanoAddress()">Copy Address</button>
+                    </div>
+                    <p class="nano-info">Nano is a fast, feeless cryptocurrency. <a href="https://nano.org" target="_blank">Learn more</a></p>
+                </div>
 
-// Mobile nav toggle
-document.getElementById('navToggle').addEventListener('click', function() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open on mobile
-    if (navLinks.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
-});
+                <div class="support-item">
+                    <h3>Share Our Music</h3>
+                    <p>Help us reach more listeners by sharing our music with friends and on social media.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/schizoidlloyd" target="_blank" class="social-btn">Facebook</a>
+                        <a href="https://schizoidlloyd.bandcamp.com/" target="_blank" class="social-btn">Bandcamp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Close mobile nav when clicking a link
-document.querySelectorAll('.nav-links a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        const navLinks = document.getElementById('navLinks');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Schizoid Lloyd. All rights reserved.</p>
+            <p class="footer-tagline">Haarlem, Netherlands • Progressive Metal • Avant-Garde</p>
+        </div>
+    </footer>
 
-// Smooth scrolling with offset for fixed nav
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const target = document.querySelector(targetId);
-        if (target) {
-            const navHeight = 70; // Fixed nav height
-            const targetPosition = target.offsetTop - navHeight;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Copy Nano address to clipboard
-document.getElementById('copyBtn').addEventListener('click', function() {
-    const address = document.getElementById('nanoAddress').textContent;
-    const btn = this;
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(address).then(function() {
-            showCopySuccess(btn);
-        });
-    } else {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = address;
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-999999px';
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        showCopySuccess(btn);
-    }
-});
-
-function showCopySuccess(btn) {
-    const originalText = btn.textContent;
-    btn.textContent = '✓ Copied!';
-    btn.style.background = '#0f0';
-    btn.style.color = '#000';
-
-    setTimeout(function() {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-    }, 2000);
-}
-
-// Nano QR Placeholder
-function generateNanoQR() {
-    const qr = document.getElementById('nanoQR');
-    const addr = document.getElementById('nanoAddress').textContent;
-    qr.innerHTML = '<div style="padding:20px;text-align:center;font-size:12px">Scan for Nano<br><small>' + addr.slice(0,14) + '...</small></div>';
-}
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    generateNanoQR();
-
-    // Fade-in sections on scroll
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section').forEach(function(section) {
-        observer.observe(section);
-    });
-});
-
-// Active nav highlight on scroll
-window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(function(section) {
-        const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.offsetHeight;
-        const id = section.getAttribute('id');
-        const link = document.querySelector('.nav-links a[href="#' + id + '"]');
-
-        if (link && scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-links a').forEach(function(a) {
-                a.classList.remove('active-link');
-            });
-            link.classList.add('active-link');
-        }
-    });
-});
-</script>
-
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
