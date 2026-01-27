@@ -80,16 +80,9 @@ function showCopyNotification() {
 
 // Nano QR Placeholder
 function generateNanoQR() {
-    const qrContainer = document.getElementById('nanoQR');
-    const address = document.getElementById('nanoAddress').textContent;
-
-    qrContainer.innerHTML = `
-        <div style="padding:20px;text-align:center">
-            <div style="font-size:12px;margin-bottom:10px">NANO ADDRESS QR</div>
-            <div style="font-size:10px;word-break:break-all">Scan with your Nano wallet</div>
-            <div style="margin-top:10px;font-size:8px;color:#999">${address.substring(0,15)}...</div>
-        </div>
-    `;
+    const qr = document.getElementById('nanoQR');
+    const addr = document.getElementById('nanoAddress').textContent;
+    qr.innerHTML = `<div style="padding:20px;text-align:center;font-size:12px">Scan for Nano<br><small>${addr.slice(0,14)}...</small></div>`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
