@@ -33,6 +33,7 @@ body { margin: 0; overflow-x: hidden; padding-top: var(--nav-height, 90px);}
     border: none;
     color: var(--color-text);
     cursor: pointer;
+    z-index: 1001;
 }
 
 .nav-links {
@@ -50,25 +51,29 @@ body { margin: 0; overflow-x: hidden; padding-top: var(--nav-height, 90px);}
     }
 
     .nav-links {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         right: 0;
         width: 100%;
+        height: 100vh;
         flex-direction: column;
-        background: #000;
+        background: rgba(0, 0, 0, 0.98);
         border-top: 1px solid var(--color-border);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+        padding-top: 80px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
     }
 
-    .nav-links.open {
-        max-height: 300px;
+    .nav-links.active {
+        transform: translateX(0);
     }
 
     .nav-links a {
-        padding: 1rem;
+        padding: 1.5rem;
         border-bottom: 1px solid var(--color-border);
+        text-align: center;
+        font-size: 1.2rem;
     }
 }
 
@@ -121,6 +126,7 @@ body { margin: 0; overflow-x: hidden; padding-top: var(--nav-height, 90px);}
     position: relative;
     width: 100%;
     padding-top: 100%;
+    overflow: hidden;
 }
 
 .embed-container iframe {
@@ -128,12 +134,33 @@ body { margin: 0; overflow-x: hidden; padding-top: var(--nav-height, 90px);}
     inset: 0;
     width: 100%;
     height: 100%;
+    border: none;
 }
 
-.bandcamp-embed { padding-top: 135%; }
+.bandcamp-embed { 
+    padding-top: 120%; 
+}
 
 @media (max-width: 900px) {
     .music-grid { grid-template-columns: 1fr; }
+    
+    .embed-container {
+        padding-top: 100%;
+    }
+    
+    .bandcamp-embed {
+        padding-top: 120%;
+    }
+}
+
+@media (max-width: 600px) {
+    .embed-container {
+        padding-top: 120%;
+    }
+    
+    .bandcamp-embed {
+        padding-top: 140%;
+    }
 }
 
 /* ========== NEWSLETTER ========== */
