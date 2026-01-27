@@ -8,6 +8,15 @@ function toggleNav() {
     nav.classList.toggle('active');
 }
 
+function updateNavHeight() {
+    const nav = document.querySelector('.main-nav');
+    const navHeight = nav.offsetHeight;
+    document.documentElement.style.setProperty('--nav-height', navHeight + 'px');
+}
+
+window.addEventListener('load', updateNavHeight);
+window.addEventListener('resize', updateNavHeight);
+
 // Close mobile nav when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
