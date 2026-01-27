@@ -9,187 +9,126 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="grain-overlay"></div>
-    
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-logo">SCHIZOID LLOYD</div>
-        <button class="nav-toggle" onclick="toggleNav()">☰</button>
-        <div class="nav-links" id="navLinks">
-            <a href="#about">About</a>
-            <a href="#music">Music</a>
-            <a href="#newsletter">Newsletter</a>
-            <a href="#support">Support</a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="glitch" data-text="SCHIZOID">SCHIZOID</span>
-                <span class="glitch" data-text="LLOYD">LLOYD</span>
-            </h1>
-            <p class="hero-subtitle">Dutch Progressive Metal • Haarlem</p>
-            <div class="hero-tagline">
-                "Musical soundscapes recalling Leprous, Queen and Mr. Bungle"
+<div class="grain-overlay"></div>
+
+<nav class="main-nav">
+    <div class="nav-logo">SCHIZOID LLOYD</div>
+    <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#music">Music</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#support">Support</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            <span class="glitch" data-text="SCHIZOID">SCHIZOID</span>
+            <span class="glitch" data-text="LLOYD">LLOYD</span>
+        </h1>
+        <p class="hero-subtitle">Dutch Progressive Metal • Haarlem</p>
+        <div class="hero-tagline">"Musical soundscapes recalling Leprous, Queen and Mr. Bungle"</div>
+    </div>
+    <div class="scroll-indicator">↓</div>
+</section>
+
+<section id="about" class="section about-section">
+    <div class="container">
+        <h2 class="section-title">The Journey</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Born in October 2007 in Haarlem, Netherlands...</p>
+                <p>After winning the Rob Acda Award...</p>
+                <p>The band has shared stages with Freak Kitchen...</p>
             </div>
-        </div>
-        <div class="scroll-indicator">↓</div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="container">
-            <h2 class="section-title">The Journey</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Born in October 2007 in Haarlem, Netherlands, Schizoid Lloyd emerged as a force of experimental avant-garde metal, defying conventions and pushing boundaries.</p>
-                    
-                    <p>After winning the Rob Acda Award in 2008 and releasing the critically acclaimed EP <em>Virus</em> in 2009, the band evolved into a six-piece powerhouse. Their debut album <strong>"The Last Note In God's Magnum Opus"</strong> (2014) was released through Finnish label Blood Music and mastered at the legendary Fascination Street Studios.</p>
-                    
-                    <p>The band has shared stages with Freak Kitchen, Amplifier, Bumblefoot, and Long Distance Calling, and was hailed as one of the highlights of ProgPower Europe 2011.</p>
-                </div>
-                
-                <div class="lineup">
-                    <h3>Lineup</h3>
-                    <ul>
-                        <li><strong>Ruben Kuhlmann</strong> — Lead Vocals, Keyboards, Piano</li>
-                        <li><strong>Remo Kuhlmann</strong> — Guitars, Sitar, Vocals</li>
-                        <li><strong>Thom Lich</strong> — Guitars, Vocals</li>
-                        <li><strong>Guus van Oosterum</strong> — Bass, Vocals</li>
-                        <li><strong>Boy van Ooijen</strong> — Drums</li>
-                        <li><strong>Silas van Bezu</strong> — Piano, Keyboards</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Music Section -->
-    <section id="music" class="section music-section">
-        <div class="container">
-            <h2 class="section-title">Listen</h2>
-            
-            <div class="music-grid">
-                <!-- Bandcamp Embed -->
-                <div class="music-item">
-                    <h3>The Last Note In God's Magnum Opus</h3>
-                    <div class="embed-container bandcamp-embed">
-                        <iframe src="https://bandcamp.com/EmbeddedPlayer/album=1764879616/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless>
-                            <a href="https://schizoidlloyd.bandcamp.com/album/the-last-note-in-gods-magnum-opus-2">The Last Note in God's Magnum Opus by Schizoid Lloyd</a>
-                        </iframe>
-                    </div>
-                    <p class="music-description">Debut album (2014) — A freakish journey through progressive metal landscapes</p>
-                </div>
-
-                <!-- Spotify Embed -->
-                <div class="music-item">
-                    <h3>Spotify</h3>
-                    <div class="embed-container spotify-embed">
-                        <iframe data-testid="embed-iframe"
-                                src="https://open.spotify.com/embed/album/2Hj8ABNC5WEWX7yVPzsUFH?utm_source=generator"
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                loading="lazy">
-                        </iframe>
-                    </div>
-                    <p class="music-description">Stream our music on Spotify</p>
-                </div>
-            </div>
-
-            <div class="discography">
-                <h3>Discography</h3>
+            <div class="lineup">
+                <h3>Lineup</h3>
                 <ul>
-                    <li><strong>The Last Note In God's Magnum Opus</strong> (2014) — Full-length album</li>
-                    <li><strong>Circus</strong> (2010) — EP</li>
-                    <li><strong>Virus</strong> (2009) — EP</li>
+                    <li><strong>Ruben Kuhlmann</strong> — Lead Vocals, Keyboards</li>
+                    <li><strong>Remo Kuhlmann</strong> — Guitars, Sitar</li>
+                    <li><strong>Thom Lich</strong> — Guitars</li>
+                    <li><strong>Guus van Oosterum</strong> — Bass</li>
+                    <li><strong>Boy van Ooijen</strong> — Drums</li>
+                    <li><strong>Silas van Bezu</strong> — Keys</li>
                 </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Newsletter Section -->
-    <section id="newsletter" class="section newsletter-section">
-        <div class="container">
-            <div class="newsletter-box">
-                <h2>Stay Connected</h2>
-                <p>Subscribe to our newsletter for updates on new releases, shows, and exclusive content.</p>
-                
-                {% if messages %}
-                    <div class="messages">
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-                
-                <form method="post" class="newsletter-form">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {{ form.email }}
-                        <button type="submit" class="btn-subscribe">Subscribe</button>
-                    </div>
-                </form>
+<section id="music" class="section music-section">
+    <div class="container">
+        <h2 class="section-title">Listen</h2>
+        <div class="music-grid">
+            <div class="music-item">
+                <h3>The Last Note In God's Magnum Opus</h3>
+                <div class="embed-container bandcamp-embed">
+                    <iframe src="https://bandcamp.com/EmbeddedPlayer/album=1764879616/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"></iframe>
+                </div>
+                <p class="music-description">Debut album (2014)</p>
+            </div>
+            <div class="music-item">
+                <h3>Spotify</h3>
+                <div class="embed-container">
+                    <iframe src="https://open.spotify.com/embed/album/2Hj8ABNC5WEWX7yVPzsUFH"></iframe>
+                </div>
+                <p class="music-description">Stream on Spotify</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Support Section -->
-    <section id="support" class="section support-section">
-        <div class="container">
-            <h2 class="section-title">Support Us</h2>
-            
-            <div class="support-grid">
-                <div class="support-item">
-                    <h3>Buy Our Music</h3>
-                    <p>Purchase our albums on Bandcamp and support independent music.</p>
-                    <a href="https://schizoidlloyd.bandcamp.com/" target="_blank" class="btn-primary">Visit Bandcamp</a>
+<section id="newsletter" class="section newsletter-section">
+    <div class="container">
+        <div class="newsletter-box">
+            <h2>Stay Connected</h2>
+            <form method="post" class="newsletter-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.email }}
+                    <button type="submit" class="btn-subscribe">Subscribe</button>
                 </div>
+            </form>
+        </div>
+    </div>
+</section>
 
-                <div class="support-item nano-donate">
-                    <h3>Donate with Nano (XNO)</h3>
-                    <p>Support us with feeless, instant cryptocurrency donations.</p>
-                    <div class="nano-address-box">
-                        <div class="nano-qr" id="nanoQR"></div>
-                        <div class="nano-address" id="nanoAddress">
-                            nano_1schizo1dlloyd1band1haarlem1netherlands1prog1metal1xno
-                        </div>
-                        <button class="btn-copy" onclick="copyNanoAddress()">Copy Address</button>
-                    </div>
-                    <p class="nano-info">Nano is a fast, feeless cryptocurrency. <a href="https://nano.org" target="_blank">Learn more</a></p>
+<section id="support" class="section support-section">
+    <div class="container">
+        <h2 class="section-title">Support Us</h2>
+        <div class="support-grid">
+            <div class="support-item">
+                <h3>Buy Our Music</h3>
+                <a href="https://schizoidlloyd.bandcamp.com/" class="btn-primary">Visit Bandcamp</a>
+            </div>
+
+            <div class="support-item nano-donate">
+                <h3>Donate with Nano</h3>
+                <div class="nano-address-box">
+                    <div id="nanoQR" class="nano-qr"></div>
+                    <div id="nanoAddress" class="nano-address">nano_1schizo1dlloyd1band1haarlem1netherlands1prog1metal1xno</div>
+                    <button class="btn-copy" onclick="copyNanoAddress()">Copy Address</button>
                 </div>
+            </div>
 
-                <div class="support-item">
-                    <h3>Share Our Music</h3>
-                    <p>Help us reach more listeners by sharing our music with friends and on social media.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/schizoidlloyd" target="_blank" class="social-btn">Facebook</a>
-                        <a href="https://schizoidlloyd.bandcamp.com/" target="_blank" class="social-btn">Bandcamp</a>
-                    </div>
+            <div class="support-item">
+                <h3>Share Our Music</h3>
+                <div class="social-links">
+                    <a href="#" class="social-btn">Facebook</a>
+                    <a href="#" class="social-btn">Bandcamp</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Schizoid Lloyd. All rights reserved.</p>
-            <p class="footer-tagline">Haarlem, Netherlands • Progressive Metal • Avant-Garde</p>
-        </div>
-    </footer>
+<footer class="footer">
+    <p>&copy; 2024 Schizoid Lloyd</p>
+</footer>
 
-    <script src="{% static 'js/main.js' %}"></script>
-    <script>
-        function toggleNav() {
-            document.getElementById("navLinks").classList.toggle("active");
-        }
-
-        function copyNanoAddress() {
-            const address = document.getElementById("nanoAddress").innerText;
-            navigator.clipboard.writeText(address);
-            alert("Nano address copied!");
-        }
-    </script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
