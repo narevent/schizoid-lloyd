@@ -1,16 +1,28 @@
 #!/bin/bash
 set -e
 
-echo "================================"
-echo "Django Deployment Script"
-echo "================================"
+# CONFIGURATION
+PROJECT_NAME="'"${PROJECT_NAME}"'"                                    # Project name
+PROJECT_DIR="'"${PROJECT_DIR_PATH}"'"                            # Project directory
+BACKUP_DIR="'"${BACKUP_DIR_PATH}"'"                         # Backup directory
 
-# Configuration
-PROJECT_DIR="/var/www/schizoidlloyd"
-REPO_URL="https://github.com/narevent/schizoid-lloyd.git"
+
+# Additional configuration
+REPO_URL="https://github.com/narevent/schizoidlloyd.git"       # GitHub repository URL
+DOMAIN_NAMES="schizoidlloyd.vetgaaf.tech"               # Space-separated domain names
+PRIMARY_DOMAIN="schizoidlloyd.vetgaaf.tech"                              # Primary domain (first one)
+WSGI_MODULE="config.wsgi:application"                    # Django WSGI module (usually projectname.wsgi:application)
+
+SERVICE_NAME="gunicorn-${PROJECT_NAME}"
+
+echo "================================"
+echo "${PROJECT_NAME} Django Deployment"
+echo "================================"
 
 # Prompt for repository URL
-echo "Enter your GitHub repository URL (or press Enter to use: $REPO_URL):"
+echo "Enter your GitHub repository URL"
+echo "Current: $REPO_URL"
+echo "(Press Enter to use current, or paste new URL):"
 read -r input_repo
 if [ ! -z "$input_repo" ]; then
     REPO_URL=$input_repo
@@ -19,6 +31,7 @@ fi
 # Clone or update repository
 if [ -d "$PROJECT_DIR/.git" ]; then
     echo "Repository already exists. Skipping clone..."
+    echo "Note: Run update.sh to pull latest changes"
 else
     echo "Cloning repository..."
     sudo rm -rf $PROJECT_DIR/*
@@ -33,6 +46,8 @@ echo "Creating necessary directories..."
 sudo mkdir -p $PROJECT_DIR/logs
 sudo mkdir -p $PROJECT_DIR/staticfiles
 sudo mkdir -p $PROJECT_DIR/media
+sudo mkdir -p $PROJECT_DIR/db
+sudo mkdir -p $PROJECT_DIR/locale
 
 # Set ownership and permissions
 sudo chown -R www-data:www-data $PROJECT_DIR
@@ -61,6 +76,12 @@ if [ ! -f "$PROJECT_DIR/.env" ]; then
     sudo sed -i "s/YOUR_VPS_IP/$VPS_IP/" $PROJECT_DIR/.env
     
     echo ".env file created with generated secret key"
+    echo ""
+    echo "IMPORTANT: Edit ${PROJECT_DIR}/.env and configure:"
+    echo "  - Email settings (if using email)"
+    echo "  - Payment gateway keys (Stripe/PayPal if using)"
+    echo "  - Any other sensitive settings"
+    echo ""
 else
     echo ".env file already exists, skipping..."
 fi
@@ -68,6 +89,12 @@ fi
 # Run Django migrations
 echo "Running Django migrations..."
 sudo -u www-data $PROJECT_DIR/venv/bin/python manage.py migrate
+
+# Create translations (if using django-parler)
+echo "Compiling translations..."
+if [ -d "$PROJECT_DIR/locale" ]; then
+    sudo -u www-data $PROJECT_DIR/venv/bin/python manage.py compilemessages || echo "No translations to compile"
+fi
 
 # Collect static files
 echo "Collecting static files..."
@@ -83,16 +110,15 @@ fi
 
 # Setup Gunicorn service
 echo "Setting up Gunicorn service..."
-sudo cp $PROJECT_DIR/gunicorn.service /etc/systemd/system/gunicorn.service
+sudo cp $PROJECT_DIR/gunicorn.service /etc/systemd/system/${SERVICE_NAME}.service
 sudo systemctl daemon-reload
-sudo systemctl enable gunicorn
-sudo systemctl restart gunicorn
+sudo systemctl enable ${SERVICE_NAME}
+sudo systemctl restart ${SERVICE_NAME}
 
 # Setup Nginx
 echo "Setting up Nginx..."
-sudo cp $PROJECT_DIR/nginx.conf /etc/nginx/sites-available/schizoidlloyd
-sudo ln -sf /etc/nginx/sites-available/schizoidlloyd /etc/nginx/sites-enabled/
-sudo rm -f /etc/nginx/sites-enabled/default
+sudo cp $PROJECT_DIR/nginx.conf /etc/nginx/sites-available/${PROJECT_NAME}
+sudo ln -sf /etc/nginx/sites-available/${PROJECT_NAME} /etc/nginx/sites-enabled/
 
 # Test Nginx configuration
 echo "Testing Nginx configuration..."
@@ -117,8 +143,14 @@ if [ "$setup_ssl" = "y" ]; then
     echo "Enter your email for Let's Encrypt notifications:"
     read -r email
     
+    # Build certbot command with all domains
+    CERTBOT_DOMAINS=""
+    for domain in $DOMAIN_NAMES; do
+        CERTBOT_DOMAINS="$CERTBOT_DOMAINS -d $domain"
+    done
+    
     echo "Setting up SSL certificate..."
-    sudo certbot --nginx -d trackisolator.com -d www.trackisolator.com --non-interactive --agree-tos --email $email --redirect
+    sudo certbot --nginx $CERTBOT_DOMAINS --non-interactive --agree-tos --email $email --redirect
     
     if [ $? -eq 0 ]; then
         echo "SSL certificate installed successfully!"
@@ -127,11 +159,15 @@ if [ "$setup_ssl" = "y" ]; then
         sudo systemctl start certbot.timer
     else
         echo "SSL setup failed. You can try again later with:"
-        echo "sudo certbot --nginx -d trackisolator.com -d www.trackisolator.com"
+        echo "sudo certbot --nginx $CERTBOT_DOMAINS"
     fi
 else
     echo "Skipping SSL setup. You can run it later with:"
-    echo "sudo certbot --nginx -d trackisolator.com -d www.trackisolator.com"
+    CERTBOT_DOMAINS=""
+    for domain in $DOMAIN_NAMES; do
+        CERTBOT_DOMAINS="$CERTBOT_DOMAINS -d $domain"
+    done
+    echo "sudo certbot --nginx $CERTBOT_DOMAINS"
 fi
 
 echo ""
@@ -140,17 +176,26 @@ echo "Deployment Complete!"
 echo "================================"
 echo ""
 echo "Service status:"
-sudo systemctl status gunicorn --no-pager | head -5
+sudo systemctl status ${SERVICE_NAME} --no-pager | head -5
 echo ""
 echo "Your site should now be accessible at:"
 if [ "$setup_ssl" = "y" ]; then
-    echo "https://trackisolator.com"
+    echo "  https://${PRIMARY_DOMAIN}"
+    echo "  Admin panel: https://${PRIMARY_DOMAIN}/admin/"
 else
-    echo "http://trackisolator.com (HTTP only - setup SSL for HTTPS)"
+    echo "  http://${PRIMARY_DOMAIN} (HTTP only - setup SSL for HTTPS)"
+    echo "  Admin panel: http://${PRIMARY_DOMAIN}/admin/"
 fi
 echo ""
 echo "Useful commands:"
-echo "  View Gunicorn logs: sudo journalctl -u gunicorn -f"
+echo "  View Gunicorn logs: sudo journalctl -u ${SERVICE_NAME} -f"
 echo "  View Nginx logs: sudo tail -f /var/log/nginx/error.log"
-echo "  Restart services: sudo systemctl restart gunicorn nginx"
+echo "  Restart services: sudo systemctl restart ${SERVICE_NAME} nginx"
+echo "  Update site: bash scripts/update.sh"
 echo ""
+echo "Don't forget to:"
+echo "  - Configure email settings in .env"
+echo "  - Configure payment gateways in .env (if needed)"
+echo "  - Upload media files if migrating from another server"
+echo ""
+

@@ -1,11 +1,18 @@
 #!/bin/bash
 set -e
 
-echo "================================"
-echo "Django Update Script"
-echo "================================"
+# CONFIGURATION
+PROJECT_NAME="'"${PROJECT_NAME}"'"                                    # Project name
+PROJECT_DIR="'"${PROJECT_DIR_PATH}"'"                            # Project directory
+BACKUP_DIR="'"${BACKUP_DIR_PATH}"'"                         # Backup directory
 
-PROJECT_DIR="/var/www/schizoidlloyd"
+
+PRIMARY_DOMAIN="schizoidlloyd.vetgaaf.tech"                              # Primary domain
+SERVICE_NAME="gunicorn-${PROJECT_NAME}"
+
+echo "================================"
+echo "${PROJECT_NAME} Update Script"
+echo "================================"
 
 # Change to project directory
 cd $PROJECT_DIR
@@ -21,11 +28,16 @@ sudo -u www-data $PROJECT_DIR/venv/bin/pip install -r requirements.txt --upgrade
 echo "Running migrations..."
 sudo -u www-data $PROJECT_DIR/venv/bin/python manage.py migrate
 
+echo "Compiling translations..."
+if [ -d "$PROJECT_DIR/locale" ]; then
+    sudo -u www-data $PROJECT_DIR/venv/bin/python manage.py compilemessages || echo "No translations to compile"
+fi
+
 echo "Collecting static files..."
 sudo -u www-data $PROJECT_DIR/venv/bin/python manage.py collectstatic --noinput
 
 echo "Restarting Gunicorn..."
-sudo systemctl restart gunicorn
+sudo systemctl restart ${SERVICE_NAME}
 
 echo "Reloading Nginx..."
 sudo systemctl reload nginx
@@ -36,8 +48,11 @@ echo "Update Complete!"
 echo "================================"
 echo ""
 echo "Service status:"
-sudo systemctl status gunicorn --no-pager | head -5
+sudo systemctl status ${SERVICE_NAME} --no-pager | head -5
 echo ""
-echo "Recent logs:"
-sudo journalctl -u gunicorn -n 20 --no-pager
+echo "Recent logs (last 20 lines):"
+sudo journalctl -u ${SERVICE_NAME} -n 20 --no-pager
 echo ""
+echo "Site is running at: https://${PRIMARY_DOMAIN}"
+echo ""
+

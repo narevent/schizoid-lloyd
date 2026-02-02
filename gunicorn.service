@@ -1,20 +1,20 @@
+# CONFIGURATION
+# PROJECT_NAME: schizoidlloyd
+# PROJECT_DIR: /var/www/schizoidlloyd
+# WSGI_MODULE: config.wsgi:application
+
 [Unit]
-Description=Gunicorn daemon for Schizoid Lloyd Django application
+Description=Gunicorn daemon for schizoidlloyd Django application
 After=network.target
 
 [Service]
 User=www-data
 Group=www-data
+UMask=0007
 WorkingDirectory=/var/www/schizoidlloyd
 Environment="PATH=/var/www/schizoidlloyd/venv/bin"
 EnvironmentFile=/var/www/schizoidlloyd/.env
-ExecStart=/var/www/schizoidlloyd/venv/bin/gunicorn \
-    --workers 3 \
-    --bind unix:/var/www/schizoidlloyd/gunicorn.sock \
-    --timeout 60 \
-    --access-logfile /var/www/schizoidlloyd/logs/gunicorn-access.log \
-    --error-logfile /var/www/schizoidlloyd/logs/gunicorn-error.log \
-    config.wsgi:application
+ExecStart=/var/www/schizoidlloyd/venv/bin/gunicorn     --workers 3     --bind unix:/var/www/schizoidlloyd/gunicorn.sock     --timeout 60     --access-logfile /var/www/schizoidlloyd/logs/gunicorn-access.log     --error-logfile /var/www/schizoidlloyd/logs/gunicorn-error.log     schizoidlloyd.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
