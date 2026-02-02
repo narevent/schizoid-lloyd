@@ -8,7 +8,7 @@ BACKUP_DIR="'"${BACKUP_DIR_PATH}"'"                         # Backup directory
 
 
 # Additional configuration
-REPO_URL="https://github.com/narevent/schizoidlloyd.git"       # GitHub repository URL
+REPO_URL="https://github.com/narevent/schizoid-lloyd.git"       # GitHub repository URL
 DOMAIN_NAMES="schizoidlloyd.vetgaaf.tech"               # Space-separated domain names
 PRIMARY_DOMAIN="schizoidlloyd.vetgaaf.tech"                              # Primary domain (first one)
 WSGI_MODULE="config.wsgi:application"                    # Django WSGI module (usually projectname.wsgi:application)
